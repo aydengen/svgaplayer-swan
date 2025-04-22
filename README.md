@@ -1,6 +1,6 @@
-# svgaplayer-tt
+# svgaplayer-swan
 
-专为字节跳动小程序开发的 SVGA 播放器，已在 iOS 及 Android 手机上测试通过，由于字节跳动开发工具限制，暂不支持在开发工具预览。
+专为百度智能小程序开发的 SVGA 播放器，已在 iOS 及 Android 手机上测试通过。
 
 请仔细阅读文档和示例，如有疑问，可添加作者微信(ponycui)，可提供技术服务。
 
@@ -12,7 +12,7 @@
 
 ### 原生小程序
 
-1. 直接复制 `./dist/svgaplayer.tt.js` 到你的小程序工程目录下。
+1. 直接复制 `./dist/svgaplayer-swan.js` 到你的小程序工程目录下。
 
 2. 在需要添加播放器的 `wxml` 文件内，添加 `canvas` 组件，注意 canvas 的 id 必填，下一步会用到，type 必须为 2d。
 
@@ -25,7 +25,7 @@
 3. 在需要播放的时机，这里是 `onLoad`，执行以下代码，即可播放动画。
 
 ```js
-const { Parser, Player } = require("../../libs/svgaplayer.tt"); // 此处替换为 svgaplayer.tt.js 放置位置
+const { Parser, Player } = require("../../libs/svgaplayer-swan"); // 此处替换为 svgaplayer-swan.js 放置位置
 
 Page({
   data: {
@@ -47,14 +47,14 @@ Page({
 
 ### Taro
 
-1. 通过 `npm install git+https://github.com/svga/svgaplayer-tt.git --save` 安装依赖。
+1. 通过 `npm install git+https://github.com/svga/svgaplayer-swan.git --save` 安装依赖。
 
 2. 参照以下代码添加 Canvas 并配置动画。
 
 ```typescript
 import { Component } from 'react'
 import { View, Text, Canvas } from '@tarojs/components'
-import { Parser, Player } from "svgaplayer-tt";
+import { Parser, Player } from "svgaplayer-swan";
 
 import "taro-ui/dist/style/components/button.scss" // 按需引入
 import './index.scss'

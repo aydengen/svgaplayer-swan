@@ -4,6 +4,8 @@ import { Renderer } from "./renderer";
 import { ValueAnimator } from "./value_animator";
 import { VideoEntity } from "./video_entity";
 
+declare const swan: any; // Add declaration for Baidu API
+
 interface Range {
   location: number;
   length: number;
@@ -23,22 +25,22 @@ export class Player {
 
   async setCanvas(selector: string): Promise<any> {
     return new Promise((resolver, rej) => {
-      const query = tt.createSelectorQuery();
+      const query = swan.createSelectorQuery();
       query
         .select(selector)
         .fields({ node: true, size: true })
-        .exec((res) => {
-          this.canvas = res?.[0]?.node;
-          if (!this.canvas) {
-            rej("canvas not found.");
+        .exec((res: any) => {
+          if (!res || res.length === 0 || !res[0] || !res[0].node) {
+            rej("canvas node not found.");
             return;
           }
+          this.canvas = res[0].node;
           this.ctx = this.canvas!.getContext("2d");
-          if (!this.ctx) {
+          if (this.ctx === null) {
             rej("canvas context not found.");
             return;
           }
-          const dpr = tt.getSystemInfoSync().pixelRatio;
+          const dpr = swan.getSystemInfoSync().pixelRatio;
           this.canvas!.width = res[0].width * dpr;
           this.canvas!.height = res[0].height * dpr;
           resolver(undefined);
@@ -91,7 +93,7 @@ export class Player {
       if (typeof data === "string") {
         img.src = data;
       } else {
-        img.src = "data:image/png;base64," + tt.arrayBufferToBase64(data);
+        img.src = "data:image/png;base64," + swan.arrayBufferToBase64(data);
       }
     });
   }

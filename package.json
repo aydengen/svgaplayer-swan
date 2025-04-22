@@ -1,15 +1,16 @@
 {
-  "name": "svgaplayer-tt",
+  "name": "svgaplayer-swan",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/svgaplayer.tt.js",
-  "typings": "svgaplayer-tt.d.ts",
+  "main": "dist/svgaplayer-swan.js",
+  "typings": "svgaplayer-swan.d.ts",
   "scripts": {
-    "build": "node build.js > ./dist/svgaplayer.tt.js"
+    "build": "node build.js > ./dist/svgaplayer-swan.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.14.1",
     "@types/wechat-miniprogram": "^3.3.0",
     "browserify": "^17.0.0",
     "tinyify": "^3.0.0",
